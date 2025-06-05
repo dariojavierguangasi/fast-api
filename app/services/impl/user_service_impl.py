@@ -33,14 +33,17 @@ class UserServiceImpl(IUserService):
         return UserRead.model_validate(user)
 
     async def delete_user(self, db: AsyncSession, user_id: int) -> None:
-        await self.user_repository.get_user_by_id(user_id, db)
+        user = await self.user_repository.get_user_by_id(user_id, db)
+        if not user:
+            raise UserNotFoundException(f"User with ID {user_id} not found.")
+        await self.user_repository.delete_user(db, user)
         return None
 
     async def get_all_users(self, db: AsyncSession) -> list[UserRead]:
         users = await self.user_repository.get_all_users(db)
         return [UserRead.model_validate(user) for user in users]
 
-    async def update_user(self, db: AsyncSession, user_id: int, user_data: UserUpdate) -> UserRead | None:
+    async def update_user(self, db: AsyncSession, user_id: int, user_data: UserUpdate) -> UserRead:
         user = await self.user_repository.get_user_by_id(user_id, db)
         if not user:
             raise UserNotFoundException(f"User with ID {user_id} not found.")

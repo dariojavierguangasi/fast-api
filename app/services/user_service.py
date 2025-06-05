@@ -14,7 +14,7 @@ class IUserService(ABC):
         pass
 
     @abstractmethod
-    async def delete_user(self, db: AsyncSession, user_id: str) -> None:
+    async def delete_user(self, db: AsyncSession, user_id: int) -> None:
         pass
 
     @abstractmethod

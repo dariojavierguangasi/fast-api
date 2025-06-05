@@ -36,6 +36,6 @@ class TaskRepositoryImpl(ITaskRepository):
         result = await db.execute(select(Task))
         return result.scalars().all()
 
-    async def get_taks_by_user_id(self, db: AsyncSession, user_id: int) -> list['Task']:
+    async def get_tasks_by_user_id(self, db: AsyncSession, user_id: int) -> list['Task']:
         result = await db.execute(select(Task).where(Task.user_id == user_id))
         return result.scalars().all()

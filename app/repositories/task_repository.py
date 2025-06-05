@@ -27,5 +27,5 @@ class ITaskRepository(ABC):
         pass
 
     @abstractmethod
-    async def get_taks_by_user_id(self, db: AsyncSession, user_id: int) -> list['Task']:
+    async def get_tasks_by_user_id(self, db: AsyncSession, user_id: int) -> list['Task']:
         pass

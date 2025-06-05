@@ -1,13 +1,13 @@
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.schemas.task import TaskCreate, TaskRead
+from app.schemas.task import TaskCreate, TaskRead, TaskUpdate
 
 
 class ITaskService(ABC):
     @abstractmethod
-    async def create_task(self, db: AsyncSession, task_data: TaskCreate ) -> TaskRead:
+    async def create_task(self, db: AsyncSession, task_data: TaskCreate) -> TaskRead:
         pass
 
     @abstractmethod
@@ -23,7 +23,7 @@ class ITaskService(ABC):
         pass
 
     @abstractmethod
-    async def update_task(self, db: AsyncSession, task_id: int, task_data: TaskCreate) -> TaskRead:
+    async def update_task(self, db: AsyncSession, task_id: int, task_data: TaskUpdate) -> TaskRead:
         pass
 
     @abstractmethod
