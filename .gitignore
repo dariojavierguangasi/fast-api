@@ -1,0 +1,19 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Entornos virtuales
+.env
+.venv
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Archivos de configuración o variables sensibles
+*.env
+*.env.*
